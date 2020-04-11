@@ -1,0 +1,5 @@
+#!ipxe
+
+dhcp
+#chain https://raw.githubusercontent.com/jp83/ipxe/master/menu.ipxe
+chain --autofree https://boot.netboot.xyz
