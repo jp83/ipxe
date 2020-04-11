@@ -2,4 +2,4 @@
 
 dhcp
 #chain https://raw.githubusercontent.com/jp83/ipxe/master/menu.ipxe
-chain --autofree http://boot.netboot.xyz
+chain --autofree https://boot.netboot.xyz
