@@ -1,5 +1,16 @@
 #!ipxe
 
-dhcp
+#dhcp
+
+# Boot a persistent RancherOS to RAM
+
+# Location of Kernel/Initrd images
+set base-url http://releases.rancher.com/os/latest
+
+#kernel ${base-url}/vmlinuz rancher.state.dev=LABEL=RANCHER_STATE rancher.state.autoformat=[/dev/sda] rancher.state.wait rancher.cloud_init.datasources=[url:http://example.com/cloud-config]
+kernel ${base-url}/vmlinuz rancher.cloud_init.datasources=[url:https://raw.githubusercontent.com/jp83/ipxe/master/cloud-config.yaml]
+initrd ${base-url}/initrd
+boot
+
 #chain https://raw.githubusercontent.com/jp83/ipxe/master/menu.ipxe
-chain --autofree https://boot.netboot.xyz
+#chain --autofree https://boot.netboot.xyz

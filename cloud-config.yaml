@@ -1,0 +1,41 @@
+#cloud-config
+ 
+hostname: k8s-node-.int.jonathanphelps.com
+
+rancher:
+  services_include:
+    open-vm-tools: true
+    open-iscsi: true
+  services:
+    user-volumes:
+      volumes:
+      - /home:/home
+      - /opt:/opt
+      - /var/lib/kubelet:/var/lib/kubelet
+      - /etc/kubernetes:/etc/kubernetes
+      - /var/openebs
+  #resize_device: /dev/sda
+  network:
+    dns:
+      nameservers:
+        - 192.168.2.1
+      search:
+        - int.jonathanphelps.com
+    #interfaces:
+      #"mac=00:0c:29:23:5d:b9":
+      #eth0:
+      #  address: 192.168.2.83/24
+      #  gateway: 192.168.2.1
+      #  mtu: 1500
+      #  dhcp: false
+      #"mac=00:0c:29:23:5d:c3":
+      #eth0:
+      #  address: 192.168.5.83/24
+      #  mtu: 9000
+      #  dhcp: false
+
+
+
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLseowE6YuO1APBRyc/YkO0fKi11r71hPJC1wZ3xFt+arKRAPQOpdEJCWhGcK9BZUNH7Y2/kpUafEsgXcQrWr5uefuYRdZBHlhZ6ursbZxzQOz4FR0OJhUwMqERY6dqPQl59PLYUY2geRKY9J/42t70ZUm66csjQoiKKzkdyYZW6EoBtr6XmvCVGSmXmN6/+MTJbcn9wugkd3q46VFaNqBBe0XNatBTeo/R3i80YWgszZb1RHWsIHMZ7MdKVGBsrl4qv4grn5z0DjEIlaQxjQcamZr3aUwTPBYKUzYXkbkaPkKkqHNBZuFnnDmNewqEKEZEJNqv8BqYcea0xNstcYj jonathan@Jonathans-MacBook-Pro.local
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC630fTQbT1fs3AxZ3JPNpCirNMMblV2xkfY6jp4IRrY9uwvTrm3rl97evN2lWvK0sDKKtJmq7sG3JevQR2gx1+mcqlHbbdWKrzxGIFApHCwVcacONmp00b3HQn5QTNzM3BRvAwh13UqHrxrFVe0WML9zdS5+tmGb3Mo6ZY5hFAZNJ4zjnrz54rxnTXQt/y5cNF9RHap8yqXzxqQxwE8yjEWZM7YiCWcaWmT8gAJJVVqPHRCOzZRZRWoR9v9X7JmtLgNIAMOqDZz0GMJR9KUVSJWYmk7tM3fNoVJGMldDV1zblrBW5kgAjprmH1fcmq4HebtHiakC9BLkRueiAGZjTu8K3rVJC9AEQOMm5rZnKj85I6E29zl+oNwd74C3XvzZgRIeUDKZbJj0jrKfyMwfnVMD/Ib59zi/RXujaiS5UoriD41YbyvEkmvmieSoVkWhNF1tNv/T4xXc3ykfQwYTEFP3x6/3QxzIcVimTLbSGQ8AxbmivMYcSj57hkamo2AOpUKY+wnpWOo5PnojhBRS4EjtXm4Nh/GJdTTYkN62Uf8/sWOURJRnQ8qjjRbcHYrNVC5/C2/rgQYkMe6M1Q+s2JvwChfWZawEO5YLtwoWbzFiNu2k77geP1RAvuWMGoS/HTMo2bDASuDEnNildp7RpkceHUo3tXGZkQd/zPePrRaw==
