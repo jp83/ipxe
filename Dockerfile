@@ -13,13 +13,14 @@ RUN \
 
 RUN git clone git://git.ipxe.org/ipxe.git
 
-COPY build.sh /ipxe/src
-RUN chmod +x /ipxe/src/build.sh
-
 WORKDIR ipxe/src
 
+RUN sed -i 's/#undef.*DOWNLOAD_PROTO_HTTPS/#define DOWNLOAD_PROTO_HTTPS/g' config/general.h
 RUN make
 
 VOLUME /custom-pxe
+
+COPY build.sh .
+RUN chmod +x build.sh
 
 CMD /ipxe/src//build.sh
